@@ -34,5 +34,8 @@ public class HistoryActivity extends AppCompatActivity {
                 );
 
         listView.setAdapter(adapter);
+
+
+
     }
 }

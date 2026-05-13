@@ -24,6 +24,9 @@
 
     <string name="error_text">Error</string>
     <string name="history">History</string>
-    <string name="back">Back</string>
+    <string name="btn_back">Back</string>
+    <string name="btn_bin">BIN</string>
+    <string name="btn_oct">OCT</string>
+    <string name="btn_hex">HEX</string>
 
 </resources>

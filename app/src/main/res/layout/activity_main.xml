@@ -183,18 +183,51 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"/>
 
-            <!-- Row 5 (Power button full width) -->
+            <!-- Row 5 (Power button and other systems buttons) -->
             <Button
                 style="@style/CalcButton"
                 android:id="@+id/btnPower"
                 android:text="@string/btn_power"
+                android:textSize="20sp"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_row="4"
                 android:layout_column="0"
-                android:layout_columnSpan="2"
+                android:layout_columnSpan="1"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"/>
+
+            <Button
+                style="@style/CalcButton"
+                android:id="@+id/btnBin"
+                android:text="@string/btn_bin"
+                android:textSize="20sp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"/>
+
+            <Button
+                style="@style/CalcButton"
+                android:id="@+id/btnOct"
+                android:text="@string/btn_oct"
+                android:textSize="20sp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"/>
+
+            <Button
+                style="@style/CalcButton"
+                android:id="@+id/btnHex"
+                android:text="@string/btn_hex"
+                android:textSize="20sp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"/>
+
+            <!-- Row 6 (History 4-column length) -->
 
             <Button
                 style="@style/CalcButton"
@@ -202,7 +235,7 @@
                 android:text="@string/history"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_columnSpan="2"
+                android:layout_columnSpan="4"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"/>
 

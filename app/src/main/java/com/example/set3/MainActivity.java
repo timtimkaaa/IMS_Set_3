@@ -66,6 +66,10 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btnEquals).setOnClickListener(v -> onEqualsClicked());
         findViewById(R.id.btnClear).setOnClickListener(v -> resetCalculator());
 
+        findViewById(R.id.btnBin).setOnClickListener(v -> convertBase(2));
+        findViewById(R.id.btnOct).setOnClickListener(v -> convertBase(8));
+        findViewById(R.id.btnHex).setOnClickListener(v -> convertBase(16));
+
         findViewById(R.id.btnHistory).setOnClickListener(v -> {
 
             Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
@@ -198,6 +202,55 @@ public class MainActivity extends AppCompatActivity {
             return String.valueOf((int) value);
         } else {
             return String.valueOf(value);
+        }
+    }
+
+    // =============================
+    // CONVERT BASE
+    // =============================
+
+    private void convertBase(int base) {
+
+        String text = display.getText().toString();
+
+        try {
+
+            double value = Double.parseDouble(text);
+
+            // Only allow integers
+            if (value % 1 != 0) {
+                display.setText(getString(R.string.error_text));
+                isError = true;
+                return;
+            }
+
+            int intValue = (int) value;
+
+            String result;
+
+            switch (base) {
+
+                case 2:
+                    result = Integer.toBinaryString(intValue);
+                    break;
+
+                case 8:
+                    result = Integer.toOctalString(intValue);
+                    break;
+
+                case 16:
+                    result = Integer.toHexString(intValue).toUpperCase();
+                    break;
+
+                default:
+                    result = String.valueOf(intValue);
+            }
+
+            display.setText(result);
+
+        } catch (Exception e) {
+            display.setText(getString(R.string.error_text));
+            isError = true;
         }
     }
 

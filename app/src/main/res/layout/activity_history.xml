@@ -19,7 +19,7 @@
             android:id="@+id/btnBack"
             android:layout_width="128dp"
             android:layout_height="wrap_content"
-            android:text="@string/back" />
+            android:text="@string/btn_back" />
 
         <ListView
             android:id="@+id/historyListView"
