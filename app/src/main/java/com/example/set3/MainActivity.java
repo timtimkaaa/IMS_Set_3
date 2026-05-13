@@ -1,5 +1,6 @@
 package com.example.set3;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -10,10 +11,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     private TextView display;
 
+    private ArrayList<String> historyList = new ArrayList<>();
     private String currentInput = "";
     private Double previousResult = null;
     private String currentOperator = null;
@@ -41,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupButtons() {
+
         int[] digitButtons = {
                 R.id.btn0, R.id.btn1, R.id.btn2, R.id.btn3,
                 R.id.btn4, R.id.btn5, R.id.btn6,
@@ -60,6 +65,15 @@ public class MainActivity extends AppCompatActivity {
 
         findViewById(R.id.btnEquals).setOnClickListener(v -> onEqualsClicked());
         findViewById(R.id.btnClear).setOnClickListener(v -> resetCalculator());
+
+        findViewById(R.id.btnHistory).setOnClickListener(v -> {
+
+            Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
+
+            intent.putStringArrayListExtra("history", historyList);
+
+            startActivity(intent);
+        });
     }
 
     // =============================
@@ -119,10 +133,18 @@ public class MainActivity extends AppCompatActivity {
         double result = calculate(previousResult, inputValue, currentOperator);
 
         if (isError) {
-            display.setText("Error");
-            display.setText("Error");
+            display.setText(getString(R.string.error_text));
             return;
         }
+
+        //Saving text to history
+        String historyEntry =
+                format(previousResult) + " " +
+                        currentOperator + " " +
+                        currentInput + " = " +
+                        format(result);
+
+        historyList.add(historyEntry);
 
         display.setText(format(result));
 
@@ -165,7 +187,7 @@ public class MainActivity extends AppCompatActivity {
         currentOperator = null;
         justPressedEquals = false;
         isError = false;
-        display.setText("0");
+        display.setText(getString(R.string.display_default));
     }
 
     // =============================
